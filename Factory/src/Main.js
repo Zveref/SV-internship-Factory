@@ -4,7 +4,7 @@ import {useState} from "react";
 import Scatter from "./Scatter";
 import Pie from "./Pie";
 import Bar from "./Bar";
-import Script from "/Users/XZW/Downloads/Visualization_CRC_Jun_3-main 2/src/Script.js"
+import Script from "./Script.js"
 import GetSlider from "./ComponentFac";
 
 function TabPanel(props) {

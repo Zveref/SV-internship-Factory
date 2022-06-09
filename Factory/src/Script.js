@@ -19,7 +19,7 @@ import * as React from 'react';
 import { useQuery } from 'react-query'
 import { NavLink, useNavigate } from 'react-router-dom';
 import {base_url, headers} from "./status";
-import GetSlider from "./ComponentFac";
+import ComponentFac from "./ComponentFac";
 import Autocomplete from '@mui/material/Autocomplete';
 import { styled } from '@mui/material/styles';
 const demoLabel = { inputProps: { 'aria-label': 'Checkbox demo' } };
@@ -299,32 +299,32 @@ function Script() {
 
                                     {labels.map((item) =>
                                         {
-                                            // const varName = modifyName(item.split("***")[0])
-                                            const varName = item.split("***")[2]
-                                            const searchBy = item.split("***")[0]
-                                            const varAttri = item.split("***")[1].split('.').pop().slice(0, -2);
-                                            switch(varAttri){
-                                                case "BooleanField":
-                                                    return (<Grid item wrap="nowrap" xs={12}>{modifyName(varName)}<Checkbox {...demoLabel} defaultChecked /></Grid>);     
-                                                case "CharField":
-                                                    return (<Grid item wrap="nowrap" xs={12}>{modifyName(varName)}<Autocomplete
-                                                        disablePortal
-                                                        id="combo-box-demo"
-                                                        options={top100Films}
-                                                        sx={{ width: 300 }}
-                                                        renderInput={(params) => <TextField {...params} label="Movie" />}
-                                                      /></Grid>); 
-                                                case "DateTimeField":
-                                                    return (<Grid item xs={6}><Chip label="DateSelector" color="primary" /></Grid>); 
-                                                // default:
-                                                //     return (<Grid item wrap="nowrap" xs={varName.length > 20 ? 12 : varName.length > 10 ? 6 : 3}>{varName}<Slider defaultValue={50} aria-label="Default" valueLabelDisplay="auto" /></Grid>); 
-                                                case "IntegerField" || "DecimalField":
-                                                    return (<Grid  xs={12} padding={1}><Item>{modifyName(varName)}<GetSlider params={searchBy} /></Item></Grid>); 
-                                                default: 
-                                                    return (<Grid item xs={12}><Chip label={modifyName(varName)} color="primary" /></Grid>); 
 
-                                            }
-                                            
+                                            // const varName = item.split("***")[2]
+                                            // const searchBy = item.split("***")[0]
+                                            // const varAttri = item.split("***")[1].split('.').pop().slice(0, -2);
+                                            // switch(varAttri){
+                                            //     case "BooleanField":
+                                            //         return (<Grid item wrap="nowrap" xs={12}>{modifyName(varName)}<Checkbox {...demoLabel} defaultChecked /></Grid>);     
+                                            //     case "CharField":
+                                            //         return (<Grid item wrap="nowrap" xs={12}>{modifyName(varName)}<Autocomplete
+                                            //             disablePortal
+                                            //             id="combo-box-demo"
+                                            //             options={top100Films}
+                                            //             sx={{ width: 300 }}
+                                            //             renderInput={(params) => <TextField {...params} label="Movie" />}
+                                            //           /></Grid>); 
+                                            //     case "DateTimeField":
+                                            //         return (<Grid item xs={6}><Chip label="DateSelector" color="primary" /></Grid>); 
+                                            //     // default:
+                                            //     //     return (<Grid item wrap="nowrap" xs={varName.length > 20 ? 12 : varName.length > 10 ? 6 : 3}>{varName}<Slider defaultValue={50} aria-label="Default" valueLabelDisplay="auto" /></Grid>); 
+                                            //     case "IntegerField" || "DecimalField":
+                                            //         return (<Grid  xs={12} padding={1}><Item>{modifyName(varName)}<GetSlider params={searchBy} /></Item></Grid>); 
+                                            //     default: 
+                                            //         return (<Grid item xs={12}><Chip label={modifyName(varName)} color="primary" /></Grid>); 
+
+                                            // }
+                                            return <Grid  xs={12} padding={1}><Item><ComponentFac params={item} /></Item></Grid>
                                         }
                                     )}
                                 </Grid>
